@@ -30,8 +30,8 @@ public class UserController {
             return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    @GetMapping("/find/email")
-    public ResponseEntity<User> findAllUsers(@RequestParam String email) {
+    @GetMapping("/find/{email}")
+    public ResponseEntity<User> findUserByEmail(@PathVariable String email) {
             User user = _iUserService.getByEmail(email);
             return new ResponseEntity<>(user, HttpStatus.OK);
     }

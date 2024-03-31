@@ -73,7 +73,15 @@ class UserControllerTest {
     }
 
     @Test
-    void testFindAllUsers() {
+    void findUserByEmail() throws Exception {
+        String path = "/find/email";
+
+        MvcResult mockMvcResult = mockMvc.perform(MockMvcRequestBuilders.get(BASE_URL+path)
+                .accept(MediaType.APPLICATION_JSON_VALUE)
+                .queryParam("email","samuelhz1998@gmail.com")
+        ).andReturn();
+
+        Assertions.assertEquals(200,mockMvcResult.getResponse().getStatus());
     }
 
     private User userBuild(){
