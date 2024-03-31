@@ -26,23 +26,13 @@ public class UserController {
 
     @GetMapping("/find/all")
     public ResponseEntity<List<User>> findAllUsers() {
-        try {
             List<User> users = _iUserService.getUsers();
             return new ResponseEntity<>(users, HttpStatus.OK);
-        } catch (Exception e) {
-            // Log the exception for debugging
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
     }
 
     @GetMapping("/find/email")
     public ResponseEntity<User> findAllUsers(@RequestParam String email) {
-        try {
             User user = _iUserService.getByEmail(email);
             return new ResponseEntity<>(user, HttpStatus.OK);
-        } catch (Exception e) {
-            // Log the exception for debugging
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
     }
 }
